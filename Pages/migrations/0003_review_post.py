@@ -13,6 +13,7 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        
         migrations.CreateModel(
             name='Review_post',
             fields=[
@@ -30,4 +31,5 @@ class Migration(migrations.Migration):
                 'ordering': ['-created_on'],
             },
         ),
+        
     ]
