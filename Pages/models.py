@@ -11,6 +11,7 @@ class Game(models.Model):
     release_date = models.DateField()
     genre = models.CharField(max_length=50)
     developer = models.CharField(max_length=50)
+    featured_image = CloudinaryField('image', default='placeholder')
 
     def __str__(self):
         return self.title
