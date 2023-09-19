@@ -21,6 +21,7 @@ class Review_post(models.Model):
     title = models.CharField(max_length=200, unique=True, default="")
     slug = models.SlugField(max_length=200, unique=True)
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    featured_image = Game.featured_image
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="review_posts"
     )
