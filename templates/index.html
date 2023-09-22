@@ -5,20 +5,20 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-6">
-            <!-- Blog post-->
+            <!-- Review post-->
             {% for review in review_list %}
             <div class="card mb-4">
-                {% if "placeholder" in post.featured_image.url %}
+                {% if "placeholder" in review.featured_image.url %}
                 <img class="card-img-top"
                 src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Image_not_available.png">
                 {% else %}
-                <img class="card-img-top" src=" {{ review_post.featured_image.url }}">
+                <img class="card-img-top" src=" {{ review.featured_image.url }}">
                 {% endif %}
                 <div class="card-body">
-                    <div class="small text-muted">{{ post.created_on}}</div>
-                    <h2 class="card-title h4">{{ post.title }}</h2>
-                    <p class="card-text">Author: {{ review_post.author }} <i class="far fa-heart">{{ post.number_of_likes }}</i></p>
-                    <a class="btn btn-primary" href="{% url 'review_detail' review_post.slug  %}">Read more →</a>
+                    <div class="small text-muted">{{ review.created_on}}</div>
+                    <h2 class="card-title h4">{{ review.title }}</h2>
+                    <p class="card-text">Author: {{ review.author }} <i class="far fa-heart">{{ review.number_of_likes }}</i></p>
+                    
                 </div>
             </div>
 </div>

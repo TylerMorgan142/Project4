@@ -4,6 +4,7 @@ from django_summernote.admin import SummernoteModelAdmin
 
 admin.site.register(Game)
 
+
 @admin.register(Review_post)
 class PostAdmin(SummernoteModelAdmin):
 
