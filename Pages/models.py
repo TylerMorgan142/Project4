@@ -11,6 +11,7 @@ class Game(models.Model):
     release_date = models.DateField()
     genre = models.CharField(max_length=50)
     developer = models.CharField(max_length=50)
+    featured_image = CloudinaryField('image', default='placeholder')
 
     def __str__(self):
         return self.title
@@ -20,7 +21,6 @@ class Review_post(models.Model):
     title = models.CharField(max_length=200, unique=True, default="")
     slug = models.SlugField(max_length=200, unique=True)
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
-    featured_image = CloudinaryField('image', default='placeholder')
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="review_posts"
     )

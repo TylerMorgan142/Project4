@@ -2,26 +2,35 @@
 
 {% block content %}
 
-<div class="container-fluid">
+<div class="col-12 mt-3 left">
     <div class="row">
-        <div class="col-lg-6">
-            <!-- Review post-->
-            {% for review in review_list %}
+        {% for review in review_list %}
+        <div class="col-md-4">
             <div class="card mb-4">
-                {% if "placeholder" in review.featured_image.url %}
-                <img class="card-img-top"
-                src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Image_not_available.png">
-                {% else %}
-                <img class="card-img-top" src=" {{ review.featured_image.url }}">
-                {% endif %}
                 <div class="card-body">
-                    <div class="small text-muted">{{ review.created_on}}</div>
-                    <h2 class="card-title h4">{{ review.title }}</h2>
-                    <p class="card-text">Author: {{ review.author }} <i class="far fa-heart">{{ review.number_of_likes }}</i></p>
-                    
+                    <div class="image-container">
+                        {% if "placeholder" in review.game.featured_image.url %}
+                        <img class="card-img-top"
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png">
+                        {% else %}
+                        <img class="card-img-top" src=" {{ review.game.featured_image.url }}">
+                        {% endif %}
+                        <div class="image-flash">
+                            <p class="author">Author: {{ review.author }}</p>
+                        </div>
+                    </div>
+                    <a href="#!" class="review-link">
+                        <h2 class="card-title">{{ review.title }}</h2>
+                        <p class="card-text">{{ review.excerpt }}</p>
+                    </a>
+                    <p class="card-text"> {{ review.game }}</p>
+                    <p class="card-text"> {{ review.rating }}/10</p>
+                    <hr />
+                    <p class="card-text text-muted h6">{{ review.created_on}} <i class="far fa-heart"></i>
+                        {{ review.number_of_likes }}</p>
                 </div>
             </div>
-</div>
+        </div>
             {% if forloop.counter|divisibleby:3 %}
             </div>
             <div class="row">
