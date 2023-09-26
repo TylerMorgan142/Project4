@@ -4,7 +4,8 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 from .models import Review_post
 from .models import Game
-from .forms import CommentForm
+
+
 
 def reviewlist(request):
     review_list = Review_post.objects.filter(status=1).order_by('-created_on')
