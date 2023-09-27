@@ -29,7 +29,7 @@ SECRET_KEY = 'os.environ.get("SECRET_KEY")'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["8000-tylermorgan142-project4-m6q58mn8lhg.ws-eu104.gitpod.io", ".herokuapp.com"]
+ALLOWED_HOSTS = ["8000-tylermorgan142-project4-m6q58mn8lhg.ws-eu105.gitpod.io", ".herokuapp.com"]
 
 
 # Application definition
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'django_summernote',
+    'crispy_forms',
     'Pages',
 ]
 
@@ -56,6 +57,8 @@ SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
