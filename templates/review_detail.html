@@ -13,8 +13,6 @@
                     <h1 class="fw-bolder mb-1">{{ review.title }}</h1>
                     <!-- Post meta content-->
                     <div class="text-muted fst-italic mb-2">{{ review.author}} {{ review.created_on }}</div>
-                    
-                    
                 </header>
                 <!-- Post content-->
                 <section class="mb-5">
@@ -28,7 +26,7 @@
                     <div class="col-1">
                         <strong>
                             {% if user.is_authenticated %}
-                            <form class="d-inline" action="#!" method="POST">
+                            <form class="d-inline" action="{% url 'post_like' review.slug %}" method="POST">
                                 {% csrf_token %}
                                 {% if liked %}
                                 <button type="submit" name="review_id" value="{{review.slug}}" class="btn-like"><i class="fas fa-heart"></i></button>
