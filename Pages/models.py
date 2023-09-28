@@ -26,7 +26,6 @@ class Review_post(models.Model):
     )
     updated_on = models.DateTimeField(auto_now=True)
     content = models.TextField()
-    excerpt = models.TextField(blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     rating = models.IntegerField(
         validators=[

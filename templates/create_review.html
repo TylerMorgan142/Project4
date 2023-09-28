@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form class="text-danger">
+    <h3 class="fw-bolder">
+    <div class="form-group">
+        {{ form.title.label_tag }}
+        {{ form.title }}
+    </div>
+    </h3>
+    <h3 class="fw-bolder">
+    <div class="form-group">
+        {{ form.game.label_tag }}
+        {{ form.game }}
+    </div>
+    </h3>
+    <h3 class="fw-bolder">
+    <div class="form-group">
+        {{ form.content.label_tag }}
+        {{ form.content }}
+    </div>
+    </h3>
+    <h3 class="fw-bolder">
+    <div class="form-group">
+        {{ form.rating.label_tag }}
+        {{ form.rating }}
+        <button type="submit" class="btn btn-danger btn-lg">Submit</button>
+    </div>
+    </h3>
+    
+  </form>
+
+
+{%endblock%}

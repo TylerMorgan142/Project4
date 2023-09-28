@@ -52,6 +52,11 @@
             <div class="container black">
                 <div class="text-center my-5 black">
                     <h1 class="fw-bolder text-danger">Welcome to Game Reviewer</h1>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'create_review' %}" class="btn btn-danger">Create Review</a>
+                    {% else %}
+                    <p>Please login to create a review</p>
+                    {% endif %}
                 </div>
             </div>
         </header>

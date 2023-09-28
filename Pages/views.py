@@ -3,7 +3,7 @@ from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from .models import Review_post
-from .forms import CommentForm
+from .forms import CommentForm, ReviewForm
 
 
 def reviewlist(request):
@@ -77,3 +77,22 @@ class ReviewLike(View):
         else:
             review.likes.add(request.user)
         return HttpResponseRedirect(reverse('review_detail', args=[slug]))
+
+
+def create_review(request):
+    if request.method == 'POST':
+        review_form = ReviewForm(request.POST)
+        if review_form.is_valid():
+            review = review_form.save(commit=False)
+            review.author = request.user
+            review.save()
+            return redirect('home')
+    else:
+        review_form = ReviewForm()
+    return render(
+        request,
+        "create_review.html",
+        {
+         'form': review_form
+        },
+    )
