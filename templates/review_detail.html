@@ -7,23 +7,26 @@
         <div class="col-lg-8">
             <article>
                 <!-- Post header-->
-                <header class="mb-4">
+                <header class="mb-4 text-white">
                     <!-- Post title-->
-                    <h1 class="fw-bolder mb-1">{{ review.title }}</h1>
+                    <h1 class="fw-bolder mb-1 text-danger">{{ review.title }}</h1>
                     <!-- Post meta content-->
-                    <div class="text-muted fst-italic mb-2">{{ review.author}} {{ review.created_on }}</div>
+                    <div class="fst-italic mb-2">
+                        {{ review.author}} {{ review.created_on }} 
+                        <p> {{ review.game.title}}, {{ review.game.developer}}, {{ review.game.release_date}},  {{ review.game.genre}} </p>
+                    </div>
+                    <div class="fw-bolder text-danger">
+                        <h3>{{ review.rating }}/10</h3>
+                    </div>
                 </header>
                 <!-- Post content-->
                 <section class="mb-5">
-                    <div>
-                   <p> Game: {{ review.game.title}} </p>
-                   <p> Developer: {{ review.game.developer}} </p>
-                   <p> Release Date: {{ review.game.release_date}} </p>
-                   <p> Genre: {{ review.game.genre}} </p>
-                   </div>
-                   <br>
-                    {{ review.content | safe }}
-                    
+                    <div class="text-white" id="content-div">
+                        <div>
+                            <img src="{{ review.game.featured_image.url }}">
+                        </div>
+                        {{ review.content | safe }}
+                    </div>
                 </section>
             </article>
 
@@ -36,21 +39,21 @@
                             <form class="d-inline" action="{% url 'review_like'  review.slug %}" method="POST">
                                 {% csrf_token %}
                                 {% if liked %}
-                                <button type="submit" name="review_id" value="{{review.slug}}" class="btn-like"><i class="fas fa-heart"></i></button>
+                                <button type="submit" name="review_id" value="{{review.slug}}"><i class="fa-solid fa-heart" style="color: #ff0000;"></i></button>
                                 {% else %}
-                                <button type="submit" name="review_id" value="{{review.slug}}" class="btn-like"><i class="far fa-heart"></i></button>
+                                <button type="submit" name="review_id" value="{{review.slug}}" class="btn-like"><i class="fa-solid fa-heart" style="color: #ffffff;"></i></button>
                                 {% endif %}
                             </form>
                             {% else %}
-                            <span class="text-secondary"><i class="far fa-heart"></i></span>
+                            <span class= "text-white"><i class="far fa-heart"></i></span>
                             {% endif %}
                         
-                        <span class="text-secondary">{{ review.number_of_likes }} </span>
+                        <span class="text-white">{{ review.number_of_likes }} </span>
                         </strong>
                     </div>
                     <div class="col-1">
                         {% with comments.count as total_comments %}
-                        <strong class="text-secondary"><i class="far fa-comments"></i>
+                        <strong class="text-white"><i class="far fa-comments"></i>
                             
                             {{ total_comments }}</strong>
                         {% endwith %}
@@ -64,30 +67,33 @@
             <hr>
         </div>
     </div>
+    <hr>
     <div class="row">
-        <div class="col-md-8 card mb-4  mt-3 ">
-            <h3>Comments:</h3>
-            <div class="card-body">
+        <div class="col-md-8 card mb-4  mt-3 black">
+            <h3 class="fw-bolder black text-danger" style="margin-left: 30px;">Comments:</h3>
+            <div class="card-body black text-white">
                 
                 {% for comment in comments %}
                 <div class="comments" style="padding: 10px;">
                     <p class="font-weight-bold">
                         
                         {{ comment.name }}
-                        <span class=" text-muted font-weight-normal">
+                        <span class="font-weight-normal ">
                             
                             {{ comment.created_on }}
                         </span> wrote:
                     </p>
                     
-                    {{ comment.body | linebreaks }}
+                    {{ comment.body }}
                 </div>
+
+                <hr>
                 
                 {% endfor %}
             </div>
         </div>
-        <div class="col-md-4 card mb-4  mt-3 ">
-            <div class="card-body">
+        <div class="col-md-4 card mb-4  mt-3 black">
+            <div class="card-body text-white">
                 
                 {% if commented %}
                 <div class="alert alert-success" role="alert">
@@ -96,12 +102,12 @@
                 {% else %}
                 {% if user.is_authenticated %}
 
-                <h3>Leave a comment:</h3>
+                <h3 class="fw-bolder text-danger">Leave a comment:</h3>
                 <p>Posting as: {{ user.username }}</p>
                 <form method="post" style="margin-top: 1.3em;">
                     {{ comment_form | crispy }}
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+                    <button type="submit" class="btn btn-signup btn-lg btn-danger">Submit</button>
                 </form>
                 {% endif %}
                 {% endif %}

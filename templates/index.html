@@ -7,7 +7,7 @@
         {% for review in review_list %}
         <div class="col-md-4">
             <div class="card mb-4">
-                <div class="card-body">
+                <div class="card-body black">
                     <div class="image-container">
                         {% if "placeholder" in review.game.featured_image.url %}
                         <a href="{% url 'review_detail' review.slug  %}">
@@ -19,18 +19,18 @@
                             <img class="card-img-top" src=" {{ review.game.featured_image.url }}">
                         </a>
                         {% endif %}
-                        <div class="image-flash">
+                        <div class="image-flash text-light">
                             <p class="author">Author: {{ review.author }}</p>
                         </div>
                     </div>
                     <a href="{% url 'review_detail' review.slug  %}" class="review-link">
-                        <h2 class="card-title">{{ review.title }}</h2>
-                        <p class="card-text">{{ review.excerpt }}</p>
+                        <h2 class="card-title text-danger">{{ review.title }}</h2>
+                        <p class="card-text text-light">{{ review.excerpt }}</p>
                     </a>
-                    <p class="card-text"> {{ review.game }}</p>
-                    <p class="card-text"> {{ review.rating }}/10</p>
+                    <p class="card-text text-light"> {{ review.game }}</p>
+                    <p class="card-text text-light"> {{ review.rating }}/10</p>
                     <hr />
-                    <p class="card-text text-muted h6">{{ review.created_on}} <i class="far fa-heart"></i>
+                    <p class="card-text h6 text-danger" >{{ review.created_on}} <i class="far fa-heart"></i>
                         {{ review.number_of_likes }}</p>
                 </div>
             </div>
