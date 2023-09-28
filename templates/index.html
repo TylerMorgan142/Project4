@@ -10,10 +10,14 @@
                 <div class="card-body">
                     <div class="image-container">
                         {% if "placeholder" in review.game.featured_image.url %}
-                        <img class="card-img-top"
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png">
+                        <a href="{% url 'review_detail' review.slug  %}">
+                            <img class="card-img-top"
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png">
+                        </a>
                         {% else %}
-                        <img class="card-img-top" src=" {{ review.game.featured_image.url }}">
+                        <a href="{% url 'review_detail' review.slug  %}">
+                            <img class="card-img-top" src=" {{ review.game.featured_image.url }}">
+                        </a>
                         {% endif %}
                         <div class="image-flash">
                             <p class="author">Author: {{ review.author }}</p>
