@@ -10,8 +10,6 @@
 
 - As a Site User I can register for an account so that make my own reviews and interact with others people's
 
-- As a Site User I can view a list of reviews so that I can select one to read
-
 - As a Site User I can open up a review so that I can read the whole thing
 
 - As a Site User I can give games a rating on a scale of 1-10 so that I can easily convey my opinion on a game
@@ -71,4 +69,78 @@ On this page is also the comments section and the form for users to leave commen
 ![Screenshot of comments section logged in](static/images/comments.png)
 
 ![Screenshot of review detail logged out](static/images/review_detail_loggedout.png)
-#### 
+
+
+### Features not yet implemented
+
+- Give users the ability to search for a specific game
+
+- Give users the ability to filter games by genre
+
+- Give users the ability to search for games by as specific developer
+
+- Give users the ability to search games by their average ratings
+
+
+# Testing
+
+## Code Validation
+
+### HTML
+All html code passed the [W3C validator](https://validator.w3.org/)
+### CSS
+All css code passed the [W3C validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
+
+### Python
+Other than some line too long errors in various files, all code passes through the [Code Institute PEP8 Validator](https://pep8ci.herokuapp.com/) without any issues.
+
+### Javascript
+All JS code passes the [JS code tester](https://jshint.com/)
+
+## Responsiveness
+
+All pages have shown to be responsive on larger and smaller screens
+
+## Manual User Stories Testing
+
+- As a Site User I can create, read, update and delete reviews so that I can manage the content I post
+
+A logged in site user is capable of performing all CRUD functionalities on their reviews
+
+- As a Site User I can view a paginated list of reviews so that I can select which review I want to look at
+
+A site user can view a paginated list of reviews on the home page
+
+- As a Site User I can register for an account so that make my own reviews and interact with others people's
+
+A site user is capable of registering for an account with the register button in the navigation bar, this allows them to make their own reviews and interact with other people's in the form of comments and likes
+
+- As a Site User I can open up a review so that I can read the whole thing
+
+A site user is capable of opening up a review to view the details of said review by clicking anywhere on the image or title for the review
+
+- As a Site User I can give games a rating on a scale of 1-10 so that I can easily convey my opinion on a game
+
+A site user is capable of giving a rating on a scale of 1-10 when creating their reviews via use of the form
+
+- As a Site User / Admin I can view the number of likes on each review so that I can see which reviews people tend to agree or disagree with.
+
+A site user is capable of viewing the number of likes on a review indicated by the numbere next to the heart icon present on all reviews on the home page and in their details pages
+
+- As a Site User / Admin I can view comments on an individual post so that I can read the conversation.
+
+A site user is capable of viewing all comments left on a post via opening up said review
+
+- As a Site User I can leave comments on a review so that I can be involved in the conversation
+
+A site user that is logged in is capable of leaving a comment on a review
+
+- As a Site User I can like or unlike a post so that I can interact with the content
+
+A site user is capable of liking and unliking posts by clicking the heart icon when they open up a review
+
+# Bugs
+
+## Solved Bugs
+
+I had a problem with review posts not being assigned a slug unless they were made within the admin panel. Code taken from [here](https://www.geeksforgeeks.org/overriding-the-save-method-django-models/) fixed this issue

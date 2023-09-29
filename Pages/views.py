@@ -118,7 +118,7 @@ def edit_review(request, slug):
         form = ReviewForm(request.POST, instance=review)
         if form.is_valid():
             form.save()
-            
+
             messages.add_message(request, messages.INFO, 'Your review was updated successfully')
             return redirect('review_detail', slug=slug)
     else:
