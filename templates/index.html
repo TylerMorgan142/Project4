@@ -11,12 +11,12 @@
                     <div class="image-container">
                         {% if "placeholder" in review.game.featured_image.url %}
                         <a href="{% url 'review_detail' review.slug  %}">
-                            <img class="card-img-top"
+                            <img class="card-img-top" alt="No image available"
                                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png">
                         </a>
                         {% else %}
                         <a href="{% url 'review_detail' review.slug  %}">
-                            <img class="card-img-top" src=" {{ review.game.featured_image.url }}">
+                            <img class="card-img-top" src=" {{ review.game.featured_image.url }}" alt="featured_image for the game being reviewed">
                         </a>
                         {% endif %}
                         <div class="image-flash text-light">
@@ -28,7 +28,7 @@
                     </a>
                     <p class="card-text text-light"> {{ review.game }}</p>
                     <p class="card-text text-light"> {{ review.rating }}/10</p>
-                    <hr />
+                    <hr>
                     <p class="card-text h6 text-danger" >{{ review.created_on}} <i class="far fa-heart"></i>
                         {{ review.number_of_likes }}</p>
                 </div>
@@ -56,5 +56,5 @@
         </ul>
     </nav>
     {% endif %}
-</div>
+    
 {%endblock%}

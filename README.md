@@ -47,6 +47,11 @@ Right under the nav-bar is the header displaying the sites name and if the user 
 
 ![image of nav-bar/header when logged in](static/images/nav_header_loggedin.png)
 
+On smaller screens, the nav-bar becomes a burger menu
+![image of nav-bar/header when on smaller screens](static/images/burgernav.png)
+
+
+
 When a user clicks the create review button, they are bought to a form to fill in the details of their review.
 
 ![Screenshot of review form](static/images/review_form.png)
@@ -149,10 +154,18 @@ I had a problem with review posts not being assigned a slug unless they were mad
 
 This project was deployed to Heroku at [this location](https://game-reviewer-project-335afd7f7340.herokuapp.com/?page=1)
 
-1 The steps for deployment are as follows:
+ The steps for deployment are as follows:
 
-2 Sign up for Heroku
+1 Sign up for Heroku
 
-3 Go to the dashboard and create a new app
+2 Go to the dashboard and create a new app
 
-4 Give the app a name and assign it a region, then click "create app".
+3 Give the app a name and assign it a region, then click "create app".
+
+4 In the settings page give the app a config var with a key of "PORT" and a value of "8000". This project also includes CLOUDINARY_URL, DATABASE_URL, HEROKU_POSTGRESQL_IVORY_URL, and SECRET_KEY
+
+5 Still in settings add the Python buildpack
+
+6 In the deployment page, the app is connected to my github account and repository.
+
+This app automatically deploys itself when any new code is pushed to Github.
