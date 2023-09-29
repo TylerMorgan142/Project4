@@ -9,11 +9,13 @@
                 <!-- Post header-->
                 <header class="mb-4 text-white">
                     {% if user.is_authenticated and user == review.author %}
+                    <a href="{% url 'edit_review' review.slug %}" class="btn btn-primary btn-danger">Edit Review</a>
+                    {% endif %}
+                    <hr>
                     <form method="post" action="{% url 'delete_review' review.slug %}">
                     {% csrf_token %}
                         <button type="submit" class="btn btn-danger">Delete Review</button>
                     </form>
-                    {% endif %}
                     <!-- Post title-->
                     <h1 class="fw-bolder mb-1 text-danger">{{ review.title }}</h1>
                     <!-- Post meta content-->
@@ -98,11 +100,8 @@
         <div class="col-md-4 card mb-4  mt-3 black">
             <div class="card-body text-white">
                 
-                {% if commented %}
-                <div class="alert alert-success" role="alert">
-                    Your comment is awaiting approval
-                </div>
-                {% else %}
+                
+                
                 {% if user.is_authenticated %}
 
                 <h3 class="fw-bolder text-danger">Leave a comment:</h3>
@@ -112,7 +111,7 @@
                     {% csrf_token %}
                     <button type="submit" class="btn btn-signup btn-lg btn-danger">Submit</button>
                 </form>
-                {% endif %}
+                
                 {% endif %}
             </div>
         </div>

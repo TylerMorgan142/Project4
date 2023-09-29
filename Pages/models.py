@@ -2,8 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from cloudinary.models import CloudinaryField
-
-STATUS = ((0, "Draft"), (1, "Published"))
+from django.utils.text import slugify
 
 
 class Game(models.Model):
@@ -33,7 +32,6 @@ class Review_post(models.Model):
             MinValueValidator(1),
         ]
     )
-    status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(
         User, related_name='review_like', blank=True)
 
@@ -46,6 +44,11 @@ class Review_post(models.Model):
     def number_of_likes(self):
         return self.likes.count()
 
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(f"{self.game} review by {self.author}")
+        super(Review_post, self).save(*args, **kwargs)
+
 
 class Comment(models.Model):
     post = models.ForeignKey(Review_post, on_delete=models.CASCADE,
@@ -54,7 +57,6 @@ class Comment(models.Model):
     email = models.EmailField()
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
-    approved = models.BooleanField(default=False)
 
     class Meta:
         ordering = ["created_on"]

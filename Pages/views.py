@@ -9,7 +9,7 @@ from .forms import CommentForm, ReviewForm
 
 class ReviewList(ListView):
     model = Review_post
-    queryset = Review_post.objects.filter(status=1).order_by('-created_on')
+    queryset = Review_post.objects.order_by('-created_on')
     template_name = 'index.html'
     context_object_name = 'review_list'
     paginate_by = 6
@@ -18,9 +18,9 @@ class ReviewList(ListView):
 class ReviewDetail(View):
 
     def get(self, request, slug, *args, **kwargs):
-        queryset = Review_post.objects.filter(status=1)
+        queryset = Review_post.objects
         review = get_object_or_404(queryset, slug=slug)
-        comments = review.comments.filter(approved=True).order_by('created_on')
+        comments = review.comments.order_by('created_on')
         liked = False
         if review.likes.filter(id=self.request.user.id).exists():
             liked = True
@@ -38,9 +38,9 @@ class ReviewDetail(View):
         )
 
     def post(self, request, slug, *args, **kwargs):
-        queryset = Review_post.objects.filter(status=1)
+        queryset = Review_post.objects
         review = get_object_or_404(queryset, slug=slug)
-        comments = review.comments.filter(approved=True).order_by('created_on')
+        comments = review.comments.order_by('created_on')
         liked = False
         if review.likes.filter(id=self.request.user.id).exists():
             liked = True
@@ -89,17 +89,15 @@ def create_review(request):
             review = review_form.save(commit=False)
             review.author = request.user
             review.save()
-            messages.add_message(request, messages.INFO, 'Your review is awaiting authorisation')
+            messages.add_message(request, messages.INFO, 'Your review was uploaded successfully')
             return redirect('home')
-        else:
-            messages.add_message(request, messages.INFO, 'Something went wrong, please insure all fields were filled out correctly')
     else:
         review_form = ReviewForm()
     return render(
         request,
         "create_review.html",
         {
-         'form': review_form
+            'form': review_form,
         },
     )
 
@@ -109,4 +107,21 @@ def delete_review(request, slug):
 
     if request.user == review.author:
         review.delete()
+        messages.add_message(request, messages.INFO, 'Your review was deleted successfully')
         return redirect('home')
+
+
+def edit_review(request, slug):
+    review = get_object_or_404(Review_post, slug=slug)
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, instance=review)
+        if form.is_valid():
+            form.save()
+            
+            messages.add_message(request, messages.INFO, 'Your review was updated successfully')
+            return redirect('review_detail', slug=slug)
+    else:
+        form = ReviewForm(instance=review)
+
+    return render(request, 'edit_review.html', {'form': form, 'review': review})
