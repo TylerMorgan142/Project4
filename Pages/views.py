@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.contrib import messages
@@ -86,6 +86,7 @@ def create_review(request):
             review = review_form.save(commit=False)
             review.author = request.user
             review.save()
+            messages.add_message(request, messages.INFO, 'Your review is awaiting authorisation')
             return redirect('home')
     else:
         review_form = ReviewForm()

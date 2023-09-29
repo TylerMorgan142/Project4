@@ -2,7 +2,8 @@
 
 {% block content %}
 
-<form class="text-danger">
+<form method="POST" class="text-danger">
+    {% csrf_token %}
     <h3 class="fw-bolder">
     <div class="form-group">
         {{ form.title.label_tag }}
@@ -24,6 +25,7 @@
     <h3 class="fw-bolder">
     <div class="form-group">
         {{ form.rating.label_tag }}
+        (must be out of 10)
         {{ form.rating }}
         <button type="submit" class="btn btn-danger btn-lg">Submit</button>
     </div>

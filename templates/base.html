@@ -55,7 +55,7 @@
                     {% if user.is_authenticated %}
                     <a href="{% url 'create_review' %}" class="btn btn-danger">Create Review</a>
                     {% else %}
-                    <p>Please login to create a review</p>
+                    <p class="text-danger">Please login to create a review</p>
                     {% endif %}
                 </div>
             </div>
@@ -93,7 +93,7 @@
                 let messages = document.getElementById('msg');
                 let alert = new bootstrap.Alert(messages);
                 alert.close();
-            }, 300);
+            }, 3000);
         </script>
     </body>
 </html>
