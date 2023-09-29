@@ -1,15 +1,18 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
+from django.views.generic import ListView
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from .models import Review_post
 from .forms import CommentForm, ReviewForm
 
 
-def reviewlist(request):
-    review_list = Review_post.objects.filter(status=1).order_by('-created_on')
-    context = {'review_list': review_list}
-    return render(request, 'index.html', context)
+class ReviewList(ListView):
+    model = Review_post
+    queryset = Review_post.objects.filter(status=1).order_by('-created_on')
+    template_name = 'index.html'
+    context_object_name = 'review_list'
+    paginate_by = 6
 
 
 class ReviewDetail(View):
@@ -88,6 +91,8 @@ def create_review(request):
             review.save()
             messages.add_message(request, messages.INFO, 'Your review is awaiting authorisation')
             return redirect('home')
+        else:
+            messages.add_message(request, messages.INFO, 'Something went wrong, please insure all fields were filled out correctly')
     else:
         review_form = ReviewForm()
     return render(
@@ -97,3 +102,5 @@ def create_review(request):
          'form': review_form
         },
     )
+
+
