@@ -92,7 +92,7 @@ On this page is also the comments section and the form for users to leave commen
 ## Code Validation
 
 ### HTML
-All html code passed the [W3C validator](https://validator.w3.org/)
+All html code passed the [W3C validator](https://validator.w3.org/) with the exception of a stray end div tag that I cannot find.
 ### CSS
 All css code passed the [W3C validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
 
