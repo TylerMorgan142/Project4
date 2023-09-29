@@ -44,9 +44,10 @@ class Review_post(models.Model):
     def number_of_likes(self):
         return self.likes.count()
 
+    # this is taken from 
+    # https://www.geeksforgeeks.org/overriding-the-save-method-django-models/
     def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(f"{self.game} review by {self.author}")
+        self.slug = slugify(f"{self.game} review by {self.author}")
         super(Review_post, self).save(*args, **kwargs)
 
 

@@ -1,108 +1,74 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Game Reviewer
 
-Welcome TylerMorgan142,
+## UX
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+### User Stories
+#### Completed
+- As a Site User I can create, read, update and delete reviews so that I can manage the content I post
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+- As a Site User I can view a paginated list of reviews so that I can select which review I want to look at
 
-## Gitpod Reminders
+- As a Site User I can register for an account so that make my own reviews and interact with others people's
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+- As a Site User I can view a list of reviews so that I can select one to read
 
-`python3 -m http.server`
+- As a Site User I can open up a review so that I can read the whole thing
 
-A blue button should appear to click: _Make Public_,
+- As a Site User I can give games a rating on a scale of 1-10 so that I can easily convey my opinion on a game
 
-Another blue button should appear to click: _Open Browser_.
+- As a Site User / Admin I can view the number of likes on each review so that I can see which reviews people tend to agree or disagree with.
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+- As a Site User / Admin I can view comments on an individual post so that I can read the conversation.
 
-A blue button should appear to click: _Make Public_,
+- As a Site User I can leave comments on a review so that I can be involved in the conversation
 
-Another blue button should appear to click: _Open Browser_.
+- As a Site User I can like or unlike a post so that I can interact with the content
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+#### Uncompleted
 
-To log into the Heroku toolbelt CLI:
+- As a Site User I can search for reviews from a specific developer so that I can see how other games judge the quality of the developer's games
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+- As a Site User I can filter games by genre so that I can view reviews for genres of games that I am interested in
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+- As a Site User I can view a list of games with the highest average ratings so that see what games most people rate highly
 
-------
+- As a Site User I can search for reviews of a specific game so that I can find reviews for a game I am considering buying
 
-## Release History
+Game Reviewer is a site that aims to give people a place to review their favourite video games. The site is targeted towards gamers who wants to leave reviews for games that they have played or read up on reviews for games they are considering playing.
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+## Features
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+### Existing Features
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+The site features a fully functioning responsive navigation bar that includes a hlogo, a home button, login/logout and signtup functionality depending on whether the user is signed in or not.
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+Right under the nav-bar is the header displaying the sites name and if the user is logged in, a button to start making a review. If they are not logged in they are instead met with a message asking them to login to create a review
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+![image of nav-bar/header when logged out](static/images/nav_header_loggedout.png)
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+![image of nav-bar/header when logged in](static/images/nav_header_loggedin.png)
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+When a user clicks the create review button, they are bought to a form to fill in the details of their review.
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+![Screenshot of review form](static/images/review_form.png)
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+Under the header is the paginated list of posted reviews each containing of image of their respective game, the author of the review, the title of the review, the game the review is about, the rating awarded from the reviewer, the date and time the review was published and a like counter.
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+![Screenshot of review list](static/images/reviews.png)
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+The bottom of the page features button to take the user to the next page of the site
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+![Screenshot of pagination button](static/images/pagination.png)
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+If the user clicks on one of the reviews they are taken to a page containing the detail of the review. If the user is looking at their own review, this page features edit/delete buttons. There is also a like button, that displays how many likes the review has and a display for how many comments.
 
-------
+![Screenshot of review details](static/images/review_detail.png)
 
-## FAQ about the uptime script
+On this page is also the comments section and the form for users to leave comments on the post if they are logged in.
 
-**Why have you added this script?**
+![Screenshot of comments section logged in](static/images/comments.png)
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
+![Screenshot of review detail logged out](static/images/review_detail_loggedout.png)
+#### 
