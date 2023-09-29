@@ -8,6 +8,12 @@
             <article>
                 <!-- Post header-->
                 <header class="mb-4 text-white">
+                    {% if user.is_authenticated and user == review.author %}
+                    <form method="post" action="{% url 'delete_review' review.slug %}">
+                    {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Delete Review</button>
+                    </form>
+                    {% endif %}
                     <!-- Post title-->
                     <h1 class="fw-bolder mb-1 text-danger">{{ review.title }}</h1>
                     <!-- Post meta content-->
@@ -22,9 +28,6 @@
                 <!-- Post content-->
                 <section class="mb-5">
                     <div class="text-white" id="content-div">
-                        <div>
-                            <img src="{{ review.game.featured_image.url }}">
-                        </div>
                         {{ review.content | safe }}
                     </div>
                 </section>

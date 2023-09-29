@@ -104,3 +104,9 @@ def create_review(request):
     )
 
 
+def delete_review(request, slug):
+    review = get_object_or_404(Review_post, slug=slug)
+
+    if request.user == review.author:
+        review.delete()
+        return redirect('home')
