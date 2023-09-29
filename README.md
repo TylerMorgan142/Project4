@@ -144,3 +144,15 @@ A site user is capable of liking and unliking posts by clicking the heart icon w
 ## Solved Bugs
 
 I had a problem with review posts not being assigned a slug unless they were made within the admin panel. Code taken from [here](https://www.geeksforgeeks.org/overriding-the-save-method-django-models/) fixed this issue
+
+# Deployment
+
+This project was deployed to Heroku at [this location](https://game-reviewer-project-335afd7f7340.herokuapp.com/?page=1)
+
+1 The steps for deployment are as follows:
+
+2 Sign up for Heroku
+
+3 Go to the dashboard and create a new app
+
+4 Give the app a name and assign it a region, then click "create app".
